@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Fira Code', monospace;
+    background-color: #f4f4f4;
+    color: #333;
+
+}
+
+header {
+    background: linear-gradient(135deg, #232323, #000000); /* Degradado azul oscuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    padding: 20px 0;
+    position: sticky; /* Fijo en la parte superior cuando se hace scroll */
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff; /* Blanco */
+    letter-spacing: 2px;
+    transition: transform 0.3s ease; /* Animación para interacción */
+}
+
+header .logo h3:hover {
+    transform: scale(1.1); /* Efecto de agrandar al pasar el cursor */
+}
+
+header  a{
+    list-style: none;
+    text-decoration: none
+}
+    
+
+
+header nav ul  {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Mayor separación entre los elementos del menú */
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    color: #fff; /* Blanco */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco translúcido al hover */
+    transform: translateY(-3px); /* Efecto de levantar el enlace */
+}
+
+/* Indicador debajo del enlace en hover */
+header nav ul li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: white;
+  bottom: -5px;
+  left: 50%;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+header nav ul li:hover::after {
+    width: 100%;
+}
+
+/* Responsive: ajustes para móviles */
+
+
+/* Estilos del botón hamburguesa */
+.menu-toggle {
+  display: none; /* Ocultar el botón por defecto */
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  /* Alinear a la derecha en el header */
+  margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+.menu-toggle i {
+  pointer-events: none;
+}
+
+/* Ocultar menú en pantallas pequeñas */
+nav ul.nav-list {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  /* Mostrar el botón hamburguesa en pantallas pequeñas */
+  header .container {
+    display: flex;
+    justify-content: space-between; /* Asegura que el logo esté a la izquierda y el botón a la derecha */
+    align-items: center; /* Alinea verticalmente */
+}
+  .menu-toggle {
+      display: block;
+  }
+
+  /* Hacer que el menú nav desaparezca en pantallas pequeñas */
+  nav ul.nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    position: absolute;
+    top: 100%; /* Colocarlo justo debajo del header */
+    left: 0;
+    background-color: #232323; /* Mantén el mismo color de fondo */
+    padding: 10px 0;  }
+
+  /* Mostrar el menú cuando esté activo (en JavaScript se le añadirá la clase "active") */
+  nav ul.nav-list.active {
+      display: flex; /* Mostrar el menú */
+  }
+
+  nav ul.nav-list li {
+      margin: 10px 0;
+      text-align: center; /* Centrar los elementos en el menú */
+  }
+  header nav ul.nav-list li::after {
+    width: 0; /* Inicialmente sin ancho */
+    left: 0; /* Alinea la línea con el inicio del texto */
+    transform: translateX(0); /* Asegura que no se mueva desde el centro */
+}
+
+}
+
+
+#hero {
+    min-height: 100vh; /* Asegura que ocupe el 100% de la altura */
+    background-color: #49658f; /* Negro */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; /* Imagen a la derecha, texto a la izquierda en pantallas grandes */
+    gap: 20px;
+    padding: 50px;
+}
+
+#hero .redes {
+    display: flex;
+    align-items: center; /* Centra verticalmente todos los elementos */
+    justify-content: center; /* Centra horizontalmente los elementos */
+    gap: 15px; /* Espacio entre los elementos */
+    margin-top: 20px; /* Separación del texto o elementos cercanos */
+    transition: transform 0.3s ease; /* Animación para interacción */
+}
+
+#hero .redes a{
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 50%; /* Para mantenerlos circulares */
+    width: 42px;
+    height: 42px;
+    display: flex; /* Flexbox para centrar internamente */
+    align-items: center; /* Centra verticalmente el icono */
+    justify-content: center; /* Centra horizontalmente el icono */
+    margin: 0 5px; /* Ajusta la separación horizontal */
+    font-size: 20px;
+    transition: .3s;
+}
+#hero .redes a:hover{
+    background-color: #b0afb3;
+    transform: scale(1.1); /* Efecto de agrandar al pasar el cursor */
+
+
+}
+
+
+
+
+#hero .texto {
+    flex: 1;
+    text-align: left;
+}
+
+#hero .imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#hero img {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+    object-fit: cover; /* Asegura que la imagen mantenga su proporción al recortarla */
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    border: 5px solid hsl(211, 96%, 20%); /* Trazos azules alrededor de la imagen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave para resaltar */
+    transition: transform 0.3s ease; /* Animación para interacción */
+
+}
+#hero img:hover{
+    transform: scale(1.1); /* Efecto de agrandar al pasar el cursor */
+}
+
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+
+
+/* Cambios en pantallas pequeñas */
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column; /* Coloca el texto sobre la imagen */
+        text-align: center;
+        padding: 20px;
+    }
+
+    #hero .texto, #hero .imagen {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    #hero .imagen img {
+        max-width: 100%;
+        height: auto;
+        max-height: 500px;
+    }
+
+    #hero h1 {
+        font-size: 2em; /* Ajuste del tamaño del texto en móviles */
+    }
+
+    #hero p {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+#about, #projects, #contact {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#about h2, #projects h2, #contact h2 {
+    color: #0056b3; /* Azul más oscuro */
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#about p, #projects p, #contact p {
+    color: #000000; /* Blanco */
+    max-width: 800px;
+    margin: 0 auto;
+    
+}
+
+.project {
+    background-color: #0056b3; /* Azul más oscuro */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+footer {
+    background-color: #007bff; /* Azul más oscuro */
+    color: #fff; /* Blanco */
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+
+
+
+/* From Uiverse.io by Galahhad */ 
+.ui-btn {
+    --btn-default-bg: rgb(255, 255, 255);
+    --btn-padding: 15px 20px;
+    --btn-hover-bg: rgb(205, 205, 205);
+    --btn-transition: .3s;
+    --btn-letter-spacing: .1rem;
+    --btn-animation-duration: 1.2s;
+    --btn-shadow-color: rgba(0, 0, 0, 0.137);
+    --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+    --hover-btn-color: #470dcd;
+    --default-btn-color: #000000;
+    --font-size: 16px;
+    /* 👆 this field should not be empty */
+    --font-weight: 600;
+    --font-family: Menlo,Roboto Mono,monospace;
+    /* 👆 this field should not be empty */
+  }
+  
+  /* button settings 👆 */
+  
+  .ui-btn {
+    box-sizing: border-box;
+    padding: var(--btn-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-btn-color);
+    font: var(--font-weight) var(--font-size) var(--font-family);
+    background: var(--btn-default-bg);
+    border: none;
+    cursor: pointer;
+    transition: var(--btn-transition);
+    overflow: hidden;
+    box-shadow: var(--btn-shadow);
+  }
+  
+  .ui-btn span {
+    letter-spacing: var(--btn-letter-spacing);
+    transition: var(--btn-transition);
+    box-sizing: border-box;
+    position: relative;
+    background: inherit;
+  }
+  
+  .ui-btn span::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    background: inherit;
+  }
+  
+  .ui-btn:hover, .ui-btn:focus {
+    background: var(--btn-hover-bg);
+  }
+  
+  .ui-btn:hover span, .ui-btn:focus span {
+    color: var(--hover-btn-color);
+  }
+  
+  .ui-btn:hover span::before, .ui-btn:focus span::before {
+    animation: chitchat linear both var(--btn-animation-duration);
+  }
+  
+  @keyframes chitchat {
+    0% {
+      content: "#";
+    }
+  
+    5% {
+      content: ".";
+    }
+  
+    10% {
+      content: "^{";
+    }
+  
+    15% {
+      content: "-!";
+    }
+  
+    20% {
+      content: "#$_";
+    }
+  
+    25% {
+      content: "№:0";
+    }
+  
+    30% {
+      content: "#{+.";
+    }
+  
+    35% {
+      content: "@}-?";
+    }
+  
+    40% {
+      content: "?{4@%";
+    }
+  
+    45% {
+      content: "=.,^!";
+    }
+  
+    50% {
+      content: "?2@%";
+    }
+  
+    55% {
+      content: "\;1}]";
+    }
+  
+    60% {
+      content: "?{%:%";
+      right: 0;
+    }
+  
+    65% {
+      content: "|{f[4";
+      right: 0;
+    }
+  
+    70% {
+      content: "{4%0%";
+      right: 0;
+    }
+  
+    75% {
+      content: "'1_0<";
+      right: 0;
+    }
+  
+    80% {
+      content: "{0%";
+      right: 0;
+    }
+  
+    85% {
+      content: "]>'";
+      right: 0;
+    }
+  
+    90% {
+      content: "4";
+      right: 0;
+    }
+  
+    95% {
+      content: "2";
+      right: 0;
+    }
+  
+    100% {
+      content: "";
+      right: 0;
+    }
+  }
