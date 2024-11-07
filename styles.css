@@ -5,7 +5,22 @@
 }
 
 
+a {
+  color: rgb(255, 255, 255); /* Color del enlace sin visitar */
+  text-decoration: none; /* Remueve el subrayado si no lo necesitas */
+}
 
+a:visited {
+  color: rgb(255, 255, 255); /* Mantiene el color negro incluso después de hacer clic */
+}
+
+a:hover {
+  color: rgb(255, 255, 255); /* Mantiene el color al pasar el ratón por encima */
+}
+
+a:active {
+  color: rgb(255, 255, 255); /* Mantiene el color cuando el enlace está activo */
+}
 body {
     font-family: 'Fira Code', monospace;
     background-color: #f4f4f4;
@@ -156,6 +171,7 @@ nav ul.nav-list {
 
 
 #hero {
+  background-image: url(fondo.jpg); /* Asegúrate de que la ruta sea correcta *
     min-height: 100vh; /* Asegura que ocupe el 100% de la altura */
     background-color: #49658f; /* Negro */
     color: white;
@@ -282,11 +298,12 @@ nav ul.nav-list {
     text-align: center;
 }
 
-#about h2, #projects h2, #contact h2 {
+.portfolio h2, #sobremi h2, #projects h2, #contact h2 {
     color: #0056b3; /* Azul más oscuro */
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    text-align: center;
 }
 
 #about p, #projects p, #contact p {
@@ -305,12 +322,7 @@ nav ul.nav-list {
   max-width: 1100px;
   margin: auto;
 }
-.sobremi h2{
-  font-size: 48px;
-  text-align: center;
-  padding: 20px 0;
 
-}
 .sobremi .contenido-seccion p{
   font: 18px;
   line-height: 22px;
@@ -318,7 +330,6 @@ nav ul.nav-list {
 }
 .sobremi .contenido-seccion p span{
   color: #0056b3;
-  font-weight: bold;
 }
 .sobremi .fila{
   display: flex;
@@ -364,7 +375,8 @@ nav ul.nav-list {
   justify-content: center;
   transition: .3s;
 }.sobremi .fila .col .contenedor-intereses .interes:hover{
-  background-color: #0056b3;
+  background-color: #49658f;
+  
 }
 .sobremi .fila .col .contenedor-intereses .interes i{
   font-size: 30px;
@@ -408,11 +420,19 @@ nav ul.nav-list {
 
 .project {
     background-color: #49658f; /* Azul más oscuro */
-    margin: 20px 0;
+    margin: 60px 60px 60px 60px;
     padding: 20px;
     border-radius: 8px;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra suave para resaltar */
+    transition: transform 0.3s ease; /* Animación para interacción */
+
+}
+.project:hover{
+  box-shadow: none;
+    transform: scale(1.1); /* Efecto de agrandar al pasar el cursor */
+
 }
 #projects img{
   height: 130px;
@@ -422,6 +442,94 @@ nav ul.nav-list {
   object-fit: cover; /* Asegura que la imagen mantenga su proporción al recortarla */
   border-radius: 5px;
 }
+
+
+/* SECCION PORTFOLIO */
+.portfolio{
+  background-color: #ffffff;
+  color: #fff;
+  padding: 50px 20px;
+}
+.portfolio .contenido-seccion{
+  max-width: 1100px;
+  margin: auto;
+}
+
+.portfolio .galeria{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+}
+.proyecto{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.proyecto img{
+  border-radius: 5px;
+}
+.portfolio .galeria .proyecto{
+  position: relative;
+  max-width: 340px;
+  height: fit-content;
+  margin: 10px;
+  cursor: pointer;
+}
+.galeria .a{
+  text-decoration: none;
+}
+.portfolio .galeria .proyecto img{
+  width: 100%;
+  display: block;
+}
+.portfolio .galeria .proyecto .overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: linear-gradient(rgba(20, 89, 135, 0.908), rgba(20, 89, 135, 0.8));
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s;
+  font-size: 18px;
+  letter-spacing: 3px;
+  opacity: 0;
+}
+.portfolio .galeria .proyecto .overlay h3{
+  margin-bottom: 20px;
+  transition: 1s;
+}
+.portfolio .galeria .proyecto .overlay:hover{
+  opacity: 1;
+}
+.portfolio .galeria .proyecto .overlay:hover h3{
+  margin-bottom: 0px;
+}
+
+
+
+
+
+
+/* SECCION RESPONSIVE */
+
+
+@media screen and (max-width:700px){
+  .portfolio .galeria{
+      display: block;
+      width: 100%;
+  }
+  .portfolio .galeria .proyecto{
+      max-width: 100%;
+  }
+  .portfolio .galeria .proyecto img{
+      width: 100%;
+  }
+
+}
+
 
 
 
@@ -457,6 +565,8 @@ footer {
     /* 👆 this field should not be empty */
   }
   
+
+
   /* button settings 👆 */
   
   .ui-btn {
@@ -473,6 +583,7 @@ footer {
     transition: var(--btn-transition);
     overflow: hidden;
     box-shadow: var(--btn-shadow);
+    border-radius: 5px;
   }
   
   .ui-btn span {
