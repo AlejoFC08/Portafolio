@@ -130,6 +130,32 @@ nav ul.nav-list {
   gap: 30px;
 }
 
+.nav-list {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.nav-list.active {
+  max-height: 200px; /* Ajusta según el contenido */
+  opacity: 1;
+}
+
+
+@media (min-width: 768px) {
+  #mobile-menu {
+      display: none;
+  }
+
+  .nav-list {
+      display: flex;
+      max-height: none; /* Menú siempre visible en pantallas grandes */
+      opacity: 1;
+  }
+}
+
+
 @media (max-width: 768px) {
   /* Mostrar el botón hamburguesa en pantallas pequeñas */
   header .container {
@@ -707,3 +733,11 @@ footer {
       right: 0;
     }
   }
+
+
+
+
+
+
+
+
