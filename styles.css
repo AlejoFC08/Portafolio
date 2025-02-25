@@ -63,7 +63,22 @@ header  a{
     text-decoration: none
 }
     
+nav ul.nav-list {
+  transition: transform 0.3s ease-in-out;
+}
 
+nav ul.nav-list.active {
+  transform: translateX(0); /* Se ajusta para que aparezca con un efecto suave */
+}
+
+#mobile-menu {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#mobile-menu[aria-expanded="true"] {
+  transform: rotate(90deg);
+}
 
 header nav ul  {
     list-style: none;
